@@ -17,7 +17,7 @@
 <label for="">Родительская категория</label>
 <select class="form-control" name="categories[]" multiple="">
     <option value="0">-- без родительской категории</option>
-    @include('admin.articles.partials.categories',['categories'=>$article])
+    @include('admin.articles.partials.categories',['categories'=>$categories])
 </select>
 <label for="">Краткое описание</label>
 <textarea class="form-control" id="description_short" name="description_short">{{$article->description_short ?? ""}}</textarea>
