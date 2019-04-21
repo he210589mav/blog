@@ -177,7 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         //редактор
-        Unisharp\Ckeditor\ServiceProvider::class
+        Unisharp\Ckeditor\ServiceProvider::class,
+        //наш провайдер
+        App\Providers\BlogServiceProvider::class,
     ],
 
     /*
