@@ -16,6 +16,7 @@ Route::get('/blog/article/{slug?}','BlogController@article')->name('article');
 
 Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth']],function (){
     Route::get('/','DashboardController@dashboard')->name('admin.index');
+    Route::resource('/tags','TagsController',['as'=>'admin']);
     Route::resource('/category','CategoryController',['as'=>'admin']);
     Route::resource('/article','ArticleController',['as'=>'admin']);
     Route::group(['prefix'=>'user_managment','namespace'=>'UserManagment'],function() {
@@ -27,6 +28,7 @@ Route::get('/', function () {
     return view('blog.home');
 });
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('admin');
+//Route::get('/', 'HomeController@index')->name('home');

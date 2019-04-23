@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function makeAdmin()
+    {
+        $this->is_admin=1;
+        $this->save();
+    }
+    public function makeNormal(){
+        $this->is_admin=0;
+        $this->save();
+    }
+    public function toggleAdmin($value)
+    {
+        if($value==null){
+            return $this->makeNormal();
+        }
+        return $this->makeAdmin();
+    }
 }

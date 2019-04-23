@@ -35,9 +35,16 @@
 <input type="text" class="form-control" name="meta_description" placeholder="Заголовок описание"
        value="{{$article->meta_description ?? ""}}" required>
 
-<label for="">Теги</label>
-<input type="text" class="form-control" name="meta_keyword" placeholder="Теги, через запятую"
+<label for="">Ключевые слова</label>
+<input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова через запятую"
        value="{{$article->meta_keyword ?? ""}}" required>
+
+<label for="">Теги</label>
+
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+    {{ csrf_field() }}
+
+</form>
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
 

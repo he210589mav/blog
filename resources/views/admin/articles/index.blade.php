@@ -8,7 +8,7 @@
             @slot('active') Новости @endslot
         @endcomponent
         <hr>
-        <a href="{{route('admin.article.create')}}" class="btn-primary pull-right"><i class="fa fa-plus-square-0">
+        <a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o">
                 Создать новость
             </i> </a>
         <table class="table table-striped">
@@ -29,7 +29,7 @@
                             {{csrf_field()}}
                             <a class="btn btn-default" href="{{route('admin.article.edit',$article)}}">
                                 <i class="fa fa-edit"></i> </a>
-                            <button type="submit" class="btn"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit" class="btn"><i class="fa fa-remove"></i></button>
                         </form>
 
                     </td>

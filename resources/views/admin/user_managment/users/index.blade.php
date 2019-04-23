@@ -31,7 +31,7 @@
 
                             <a class="btn btn-default" href="{{route('admin.user_managment.user.edit', $user)}}"><i class="fa fa-edit"></i></a>
 
-                            <button type="submit" class="btn"><i class="fa fa-trash-o"></i></button>
+                            <button type="submit" class="btn"><i class="fa fa-remove"></i></button>
                         </form>
                     </td>
                 </tr>
