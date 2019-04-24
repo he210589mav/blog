@@ -43,19 +43,15 @@
 <input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова через запятую"
        value="{{$article->meta_keyword ?? ""}}" required>
 
-<script>
-    $(document).ready(function() {
-        $(".select2").select2({
-            tags: true
-        });
-</script>
     <label>Теги</label>
 
-    {!! Form::select('tags[]',
-                 $tags,
-                null,
-                ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])!!}
 
+<label>Теги</label>
+{{Form::select('tags[]',
+    $tags,
+    null,
+    ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])
+}}
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
 {!! Form::close()!!}
