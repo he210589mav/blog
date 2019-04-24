@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <body>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
@@ -94,8 +95,11 @@
 </div>
 
 <!-- Scripts -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
 </body>
 </html>
 

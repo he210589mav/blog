@@ -1,3 +1,7 @@
+{!! Form::open([
+		'route'	=> 'admin.article.store',
+		'files'	=>	true
+	])!!}
 <label for="">Статус</label>
 <select class="form-control" name="published">
     @if (isset($article->id))
@@ -39,12 +43,20 @@
 <input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова через запятую"
        value="{{$article->meta_keyword ?? ""}}" required>
 
-<label for="">Теги</label>
+<script>
+    $(document).ready(function() {
+        $(".select2").select2({
+            tags: true
+        });
+</script>
+    <label>Теги</label>
 
-<select class="form-control" name="categories[]" multiple="">
-    <option value="0">-- без родительской категории</option>
-    @include('admin.tags.partials.tags',['tags'=>$tags])
-</select>
+    {!! Form::select('tags[]',
+                 $tags,
+                null,
+                ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])!!}
+
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
+{!! Form::close()!!}
 

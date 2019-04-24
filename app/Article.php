@@ -20,24 +20,24 @@ class Article extends Model
         return $this->morphToMany('App\Category', 'categoryable');
     }
 
-    public function tags(){
-        return $this->morphToMany('App\Tags', 'post_tags');
-    }
+    //public function tags(){
+    //    return $this->morphToMany('App\Tags', 'post_tags');
+    //}
     public function children(){
         return $this->hasMany(self::class,'post_id');
     }
     public function scopeLastArticles($query,$count){
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
-    //public function tags(){
-     //   return $this->belongsToMany(
-      //      Tag::class,
-       //     'post_tags',
-         //   'post_id',
-           // 'tag_id'
+    public function tags(){
+       return $this->belongsToMany(
+          Tag::class,
+         'post_tags',
+       'post_id',
+     'tag_id'
 
-        //);
-    //}
+    );
+    }
     public function uploadImage($image){
         if($image == null){return;}
         Storage::delete('uploads/'.$this->image);

@@ -11,11 +11,5 @@
     >
         {!! $delimiter ?? "" !!}{{$tag_list->title ?? ""}}
     </option>
-    @if (count($tag_list->children)>0)
-        @include('admin.tags.partials.tags',[
-        'tags'=>$tag_list->children,
-        'delimiter'=> '-'. $delimiter
-        ])
-    @endif
-@endforeach
+    @endforeach
 
