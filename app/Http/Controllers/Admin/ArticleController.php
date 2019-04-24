@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Tag;
 use App\Article;
 use App\Category;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $tags=Tag::pluck('title','id')->all();
         return view('admin.articles.create', [
             'articles'=>[],
             'categories'=>Category::with('children')->where('parent_id',0)->get(),

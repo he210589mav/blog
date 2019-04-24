@@ -41,10 +41,10 @@
 
 <label for="">Теги</label>
 
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-    {{ csrf_field() }}
-
-</form>
+<select class="form-control" name="categories[]" multiple="">
+    <option value="0">-- без родительской категории</option>
+    @include('admin.tags.partials.tags',['tags'=>$tags])
+</select>
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
 
