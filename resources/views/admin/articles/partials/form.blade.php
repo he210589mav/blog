@@ -52,6 +52,7 @@
     null,
     ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])
 }}
+
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
 {!! Form::close()!!}
