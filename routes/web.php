@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', 'HomeController@index');
 Route::get('/blog/category/{slug?}','BlogController@category')->name('category');
 Route::get('/blog/article/{slug?}','BlogController@article')->name('article');
 
@@ -24,11 +24,11 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth']],fun
     });
 });
 
-Route::get('/', function () {
-    return view('blog.home');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
 Auth::routes();
 
-//Route::get('/', 'HomeController@index')->name('home');
+

@@ -8,34 +8,32 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
+    <meta name="keywords" content="@yield('meta_keyword')">
+    <meta name="description" content="@yield('meta_description')">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- common css -->
+    <link rel="stylesheet" href="/css/front.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+    <link rel="stylesheet" href="/css/owl.transitions.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
-    <!-- Font Awesom -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../assets/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="../assets/plugins/iCheck/all.css">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="../assets/plugins/select2/select2.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-    <!--<link rel="stylesheet" href="/css/admin.css">-->
-</head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<body>
+    <!-- HTML5 shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.js"></script>
+    <![endif]-->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head><body>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -50,9 +48,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -111,40 +107,15 @@
     @yield('content')
 </div>
 
-<!-- jQuery 2.2.3 -->
-<script src="../assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="../assets/plugins/select2/select2.full.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- SlimScroll -->
-<script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../assets/plugins/fastclick/fastclick.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="../assets/plugins/iCheck/icheck.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../assets/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../assets/dist/js/demo.js"></script>
-<script>
-    $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
 
-    });
-</script>
+<!-- js files -->
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/jquery.stickit.min.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" src="/js/scripts.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="{!! asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')!!}"></script>
 <script src="{!! asset('js/app.js') !!}"></script>

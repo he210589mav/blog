@@ -52,6 +52,7 @@ class ArticleController extends Controller
         if ($request->input('categories')):
             $article->categories()->attach($request->input('categories'));
             $article->setTags($request->get('tags'));
+
             endif;
             return redirect()->route('admin.article.index');
 
