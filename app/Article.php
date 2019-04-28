@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Article extends Model
 {
     protected $fillable=['title','slug','description_short','description','image','image_show','meta_title',
-        'meta_description','meta_keyword','published','created_by','modified_by'];
+        'meta_description','meta_keyword','published','created_at','created_by','modified_by'];
 
     public function setSlugAttribute($value){
         $this->attributes['slug']= Str::slug(mb_substr($this->title,0,40)."-".\Carbon\Carbon::now()->format('dmyHi'),
@@ -49,5 +49,30 @@ class Article extends Model
     public function setTags($ids){
         if($ids==null){return;}
         $this->tags()->sync($ids);
+    }
+    public function hasPrevious()
+    {
+        return self::where('id', '<', $this->id)->max('id');
+    }
+
+    public function getPrevious()
+    {
+        $postID = $this->hasPrevious(); //ID
+        return self::find($postID);
+    }
+
+    public function hasNext()
+    {
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function getNext()
+    {
+        $postID = $this->hasNext();
+        return self::find($postID);
+    }
+    public function related()
+    {
+        return self::all()->except($this->id);
     }
 }

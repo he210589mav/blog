@@ -10,9 +10,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        //$articles = Article::paginate(2);
+        $articles = Article::paginate(5);
 
-        return view('home');
+        return view('home',['articles'=>$articles]);
     }
     /**
      * Create a new controller instance.
@@ -29,5 +29,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function show($slug)
+    {
+        $article = Article::where('slug', $slug)->firstOrFail();
 
+        return view('show', compact('article'));
+    }
 }
