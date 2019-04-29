@@ -6,49 +6,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @foreach($articles as $article)
-                    <article class="post">
-                        <div class="post-thumb">
-                            <a href="{{route('article.show', $article->slug)}}"><img src="{{$article->getImage()}}" alt=""></a>
+                    <div class="row">
+                        @foreach($articles as $article)
+                        <div class="col-md-6">
+                            <article class="post post-grid">
+                                <div class="post-thumb">
+                                    <a href="{{route('article.show', $article->slug)}}"><img src="{{$article->getImage()}}" alt=""></a>
 
-                            <a href="{{route('article.show', $article->slug)}}" class="post-thumb-overlay text-center">
-                                <div class="text-uppercase text-center">View Post</div>
-                            </a>
-                        </div>
-                        <div class="post-content">
-                            <header class="entry-header text-center text-uppercase">
-                                <h6><a href="{{route('category.show', $article->categories()->pluck('slug')->implode(', '))}}"> {{$article->categories()->pluck('title')->implode(', ')}}</a></h6>
-
-                                <h1 class="entry-title"><a href="{{route('article.show', $article->slug)}}">{!! $article->title !!}</a></h1>
-
-
-                            </header>
-                            <div class="entry-content">
-                                <p>{!! $article->description_short !!}
-                                </p>
-
-                                <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="{{route('article.show', $article->slug)}}" class="more-link">Continue Reading</a>
+                                    <a href="#" class="post-thumb-overlay text-center">
+                                        <div class="text-uppercase text-center">View Post</div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> {!! $article->created_at !!}</span>
-                                <ul class="text-center pull-right">
-                                    <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
+                                <div class="post-content">
+                                    <header class="entry-header text-center text-uppercase">
+                                        <h6><a href="{{route('category.show', $article->category->slug)}}"> {{$article->categories()->pluck('title')->implode(', ')}}</a></h6>
+
+                                        <h1 class="entry-title"><a href="{{route('article.show', $article->slug)}}">{{$article->title}}</a></h1>
+
+
+                                    </header>
+                                    <div class="entry-content">
+                                        {!! $article->description !!}
+
+                                        <div class="social-share">
+                                            <span class="social-share-title pull-left text-capitalize">{!! $article->created_at !!}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </article>
                         </div>
-                    </article>
-                    @endforeach
-                        {{$articles->links()}}
+
+                    </div>
+                    {{$articles->links()}}
                 </div>
                 <div class="col-md-4" data-sticky_column>
                     <div class="primary-sidebar">
-
                         <aside class="widget news-letter">
                             <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
 
@@ -150,6 +143,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>
@@ -165,6 +159,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>
@@ -180,6 +175,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>
@@ -195,6 +191,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>

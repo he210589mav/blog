@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+
+use App\Category;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
@@ -20,9 +22,7 @@ class Article extends Model
         return $this->morphToMany('App\Category', 'categoryable');
     }
 
-    //public function tags(){
-    //    return $this->morphToMany('App\Tags', 'post_tags');
-    //}
+
     public function children(){
         return $this->hasMany(self::class,'post_id');
     }
@@ -75,4 +75,30 @@ class Article extends Model
     {
         return self::all()->except($this->id);
     }
+    public function remove()
+    {
+        $this->removeImage();
+        $this->delete();
+    }
+
+    public function removeImage()
+    {
+        if($this->image != null)
+        {
+            Storage::delete('uploads/' . $this->image);
+        }
+    }
+
+    public function getImage()
+    {
+        if($this->image == null)
+        {
+            return '/img/no-image.png';
+        }
+
+        return '/uploads/' . $this->image;
+
+    }
+
+
 }

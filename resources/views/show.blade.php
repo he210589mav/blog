@@ -8,19 +8,19 @@
                 <div class="col-md-8">
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="/images/blog-1.jpg" alt=""></a>
+                            <a href="{{route('article.show', $article->slug)}}"><img src="{{$article->getImage()}}" alt=""></a>
                         </div>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h6><a href="#">{!!"здесь будут категории"  !!} </a></h6>
+                                <h6><a href="{{route('category.show', $article->categories()->pluck('slug')->implode(', '))}}">{{$article->categories()->pluck('title')->implode(', ')}} </a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">{!! $article->title !!}</a></h1>
+                                <h1 class="entry-title"><a href="{{route('article.show', $article->slug)}}">{!! $article->title !!}</a></h1>
 
 
                             </header>
                             <div class="entry-content">
-                                {!! $article->content !!}
-                                </p>
+                                {!! $article->description !!}
+
                             </div>
                             <div class="decoration">
                                 @foreach($article->tags as $tag)
@@ -30,7 +30,7 @@
 
                             <div class="social-share">
 							<span
-                                    class="social-share-title pull-left text-capitalize">By Rubel On {!! $article->created_at !!}</span>
+                                    class="social-share-title pull-left text-capitalize">{!! $article->created_at !!}</span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -53,7 +53,7 @@
                             @if($article->hasPrevious())
                             <div class="single-blog-box">
                                 <a href="{{route('article.show', $article->getPrevious()->slug)}}">
-                                    <img src="/images/blog-next.jpg" alt="">
+                                    <img src="{{$article->getPrevious()->getImage()}}" alt="">
 
                                     <div class="overlay">
 
@@ -72,7 +72,7 @@
                             @if($article->hasNext())
                             <div class="single-blog-box">
                                 <a href="{{route('article.show', $article->getNext()->slug)}}">
-                                    <img src="/images/blog-next.jpg" alt="">
+                                    <img src="{{$article->getNext()->getImage()}}" alt="">
 
                                     <div class="overlay">
                                         <div class="promo-text">
@@ -94,7 +94,7 @@
                             @foreach($article->related() as $item)
                             <div class="single-item">
                                 <a href="{{route('article.show',$item->slug)}}">
-                                    <img src="/images/related-post-1.jpg" alt="">
+                                    <img src="{{$item->getImage()}}" alt="">
 
                                     <p>{{$item->title}}</p>
                                 </a>

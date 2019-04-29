@@ -51,6 +51,7 @@ class ArticleController extends Controller
         $article=Article::create($request->all());
         if ($request->input('categories')):
             $article->categories()->attach($request->input('categories'));
+            $article->uploadImage($request->file('image'));
             $article->setTags($request->get('tags'));
 
             endif;
