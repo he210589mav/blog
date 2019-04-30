@@ -12,8 +12,8 @@
 */
 Route::get('/', 'HomeController@index');
 Route::get('/article/{slug}','HomeController@show')->name('article.show');
-Route::get('/blog/category/{slug?}','BlogController@category')->name('category');
-Route::get('/blog/article/{slug?}','BlogController@article')->name('article');
+//Route::get('/blog/category/{slug?}','BlogController@category')->name('category');
+//Route::get('/blog/article/{slug?}','BlogController@article')->name('article');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 

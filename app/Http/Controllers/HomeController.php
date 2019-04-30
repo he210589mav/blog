@@ -13,8 +13,16 @@ class HomeController extends Controller
     {
 
         $articles = Article::paginate(5);
+        $popularArticle=Article::orderBy('viewed','desc')->take(3)->get();
+        $recentArticle=Article::orderBy('created_at','desc')->take(4)->get();
+        $categories=Category::all();
+        return view('home',[
+            'articles'=>$articles,
+            'popularArticle'=>$popularArticle,
+            'recentArticle'=>$recentArticle,
+            'categories'=>$categories
 
-        return view('home',['articles'=>$articles]);
+        ]);
     }
     /**
      * Create a new controller instance.
@@ -41,17 +49,17 @@ class HomeController extends Controller
     {
         $tag = Tag::where('slug', $slug)->firstOrFail();
 
-        $article = $tag->article()->paginate(5);
+        $articles = $tag->articles()->paginate(5);
 
-        return view('list', ['article'  =>  $article]);
+        return view('list', ['articles'  =>  $articles]);
     }
 
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
 
-        $article = $category->article()->paginate(5);
+        $articles = $category->articles()->paginate(5);
 
-        return view('list', ['article'  =>  $article]);
+        return view('list', ['articles'  =>  $articles]);
     }
 }

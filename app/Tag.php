@@ -14,13 +14,13 @@ class Tag extends Model
 
     }
 
+    //public function articles(){
+    //    return $this->morphedByMany('App\Article', 'post_tags');
+   // }
+
+
+
     public function articles(){
-        return $this->morphedByMany('App\Article', 'post_tags');
-    }
-
-
-
-    public function posts(){
         return $this->belongsToMany(
             Article::class,
             'post_tags',
