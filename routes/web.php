@@ -17,7 +17,7 @@ Route::get('/article/{slug}','HomeController@show')->name('article.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
-Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth']],function (){
+Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['admin']],function (){
     Route::get('/','DashboardController@dashboard')->name('admin.index');
     Route::resource('/tags','TagsController',['as'=>'admin']);
     Route::resource('/category','CategoryController',['as'=>'admin']);

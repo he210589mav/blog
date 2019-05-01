@@ -126,7 +126,7 @@
                     </div>
                     <!-- end bottom comment-->
 
-
+                 @if(Auth::check())
                     <div class="leave-comment"><!--leave comment-->
                         <h4>Leave a reply</h4>
 
@@ -157,6 +157,7 @@
                             <a href="#" class="btn send-btn">Post Comment</a>
                         </form>
                     </div><!--end leave comment-->
+                     @endif
                 </div>
                 @include('sidebar')
         </div>
