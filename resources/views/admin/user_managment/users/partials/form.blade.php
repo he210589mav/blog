@@ -20,6 +20,7 @@
 <label for="">Подтверждение</label>
 <input type="password" class="form-control" name="password_confirmation">
 
+
 <hr />
 
 <input class="btn btn-primary" type="submit" value="Сохранить">

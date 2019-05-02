@@ -2,11 +2,12 @@
 
 @section('content')
     <!--main content start-->
+
     <div class="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <article class="post">
+                     <article class="post">
                         <div class="post-thumb">
                             <a href="{{route('article.show', $article->slug)}}"><img src="{{$article->getImage()}}" alt=""></a>
                         </div>
@@ -41,13 +42,8 @@
                             </div>
                         </div>
                     </article>
-                    <div class="top-comment"><!--top comment-->
-                        <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
-                        <h4>Rubel Miah</h4>
-
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                            invidunt ut labore et dolore magna aliquyam erat.</p>
-                    </div><!--top comment end-->
+                    <!--top comment-->
+                        <!--top comment end-->
                     <div class="row"><!--blog next previous-->
                         <div class="col-md-6">
                             @if($article->hasPrevious())
@@ -102,59 +98,44 @@
                           @endforeach
                         </div>
                     </div><!--related post carousel-->
-                    <div class="bottom-comment"><!--bottom comment-->
-                        <h4>3 comments</h4>
 
-                        <div class="comment-img">
-                            <img class="img-circle" src="/images/comment-img.jpg" alt="">
-                        </div>
+                    @if(!$article->comments->isEmpty())
+                        @foreach($article->comments as $comment)
+                            <div class="bottom-comment"><!--bottom comment-->
+                                <div class="comment-img">
+                                    <img class="img-circle" src="/images/comment.jpg" alt="" width="75" height="75">
+                                </div>
 
-                        <div class="comment-text">
-                            <a href="#" class="replay btn pull-right"> Replay</a>
-                            <h5>Rubel Miah</h5>
+                                <div class="comment-text">
+                                    <h5>{{$comment->author->name}}</h5>
 
-                            <p class="comment-date">
-                                December, 02, 2015 at 5:57 PM
-                            </p>
+                                         <p class="comment-date">
+                                        {{$comment->created_at->diffForHumans()}}
+                                    </p>
+                                    <p class="para">{{$comment->text}}</p>
+                                </div>
+                               @include('admin.delmess')
+                            </div>
 
-
-                            <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                diam nonumy
-                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                                voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
-                        </div>
-                    </div>
-                    <!-- end bottom comment-->
+                        @endforeach
+                    @endif
+                <!-- end bottom comment-->
 
                  @if(Auth::check())
                     <div class="leave-comment"><!--leave comment-->
-                        <h4>Leave a reply</h4>
+                        <h4>Оставьте комментарий</h4>
 
 
-                        <form class="form-horizontal contact-form" role="form" method="post" action="#">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                           placeholder="Email">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" id="subject" name="subject"
-                                           placeholder="Website url">
-                                </div>
-                            </div>
-                            <div class="form-group">
+                        <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
+                            {{csrf_field()}}
+                            <input type="hidden" name="article_id" value="{{$article->id}}">
+                             <div class="form-group">
                                 <div class="col-md-12">
 										<textarea class="form-control" rows="6" name="message"
-                                                  placeholder="Write Massage"></textarea>
+                                                  placeholder="Напишите комментарий"></textarea>
                                 </div>
                             </div>
-                            <a href="#" class="btn send-btn">Post Comment</a>
+                            <button class="btn send-btn">Отправить</button>
                         </form>
                     </div><!--end leave comment-->
                      @endif

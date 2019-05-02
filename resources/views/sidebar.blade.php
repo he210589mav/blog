@@ -1,15 +1,16 @@
 <div class="col-md-4" data-sticky_column>
     <div class="primary-sidebar">
 
-        <aside class="widget news-letter">
-            <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
-
-            <form action="#">
-                <input type="email" placeholder="Your email address">
-                <input type="submit" value="Subscribe Now"
-                       class="text-uppercase text-center btn btn-subscribe">
-            </form>
-
+        <aside class="widget border pos-padding">
+            <h3 class="widget-title text-uppercase text-center">Категории</h3>
+            <ul>
+                @foreach($categories as $category )
+                    <li>
+                        <a href="{{route('category.show', $category->slug)}}">{{$category->title }}</a>
+                        <span class="post-count pull-right"> ({{$category->articles()->count() }})</span>
+                    </li>
+                @endforeach
+            </ul>
         </aside>
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Популярные статьи</h3>
@@ -90,17 +91,7 @@
             </div>
            @endforeach
         </aside>
-        <aside class="widget border pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Категории</h3>
-            <ul>
-                @foreach($categories as $category )
-                <li>
-                    <a href="{{route('category.show', $category->slug)}}">{{$category->title }}</a>
-                    <span class="post-count pull-right"> ({{$category->articles()->count() }})</span>
-                </li>
-                @endforeach
-            </ul>
-        </aside>
+
     </div>
 </div>
 </div>

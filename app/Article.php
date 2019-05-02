@@ -99,6 +99,16 @@ class Article extends Model
         return '/uploads/' . $this->image;
 
     }
-
-
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    //public function getComments()
+    //{
+    //    return $this->comments()->get();
+    //}
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

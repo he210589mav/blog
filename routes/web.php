@@ -17,14 +17,19 @@ Route::get('/article/{slug}','HomeController@show')->name('article.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
+Route::group(['middleware'	=>	'auth'], function(){
+    Route::post('/comment', 'CommentsController@store');
+});
+
 Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['admin']],function (){
     Route::get('/','DashboardController@dashboard')->name('admin.index');
     Route::resource('/tags','TagsController',['as'=>'admin']);
     Route::resource('/category','CategoryController',['as'=>'admin']);
     Route::resource('/article','ArticleController',['as'=>'admin']);
     Route::group(['prefix'=>'user_managment','namespace'=>'UserManagment'],function() {
-        Route::resource('/user', 'UserController', ['as' => 'admin.user_managment']);
-    });
+    Route::resource('/user', 'UserController', ['as' => 'admin.user_managment']);
+        });
+    Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comments.destroy');
 });
 
 //Route::get('/', function () {

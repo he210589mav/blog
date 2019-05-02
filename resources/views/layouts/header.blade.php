@@ -29,13 +29,21 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="index.html"><img src="/images/logo.png" alt=""></a>
+                                <a class="navbar-brand" href="/"><img src="/images/logo.png" alt=""></a>
                             </div>
 
 
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                 <ul class="nav navbar-nav text-uppercase">
+                                    @if(Auth::check() && Auth::user()->is_admin == "1")
+                                                <li><a href="/">Главная</a></li>
+                                                <li><a href="{{route('admin.index')}}" >Главная админа</a></li>
+                                                <li><a href="{{route('admin.category.index')}}">Категории</a></li>
+                                                <li><a href="{{route('admin.article.index')}}">Статьи</a></li>
+                                                <li><a href="{{route('admin.tags.index')}}">Теги</a></li>
+                                                <li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
+                                             @endif
                                     <li><a href="/">Homepage</a></li>
                                     <li><a href="about-me.html">ABOUT ME </a></li>
                                     <li><a href="contact.html">CONTACT</a></li>
