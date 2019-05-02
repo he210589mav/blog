@@ -84,7 +84,7 @@
                     </div><!--blog next previous end-->
                     <div class="related-post-carousel"><!--related post carousel-->
                         <div class="related-heading">
-                            <h4>You might also like</h4>
+                            <h4>Вам может понравится</h4>
                         </div>
                         <div class="items">
                             @foreach($article->related() as $item)
