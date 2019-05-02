@@ -62,4 +62,5 @@ class HomeController extends Controller
 
         return view('list', ['articles'  =>  $articles]);
     }
+
 }

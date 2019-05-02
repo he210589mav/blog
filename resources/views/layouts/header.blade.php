@@ -44,9 +44,9 @@
                                                 <li><a href="{{route('admin.tags.index')}}">Теги</a></li>
                                                 <li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
                                              @endif
-                                    <li><a href="/">Homepage</a></li>
-                                    <li><a href="about-me.html">ABOUT ME </a></li>
-                                    <li><a href="contact.html">CONTACT</a></li>
+                                    <li><a href="/">Домашняя страница</a></li>
+                                    <li><a href="/about">О блоге </a></li>
+                                    <li><a href="/contact">Контакты</a></li>
                                 </ul>
 
                                 <ul class="nav navbar-nav navbar-right">

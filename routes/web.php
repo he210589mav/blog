@@ -16,6 +16,9 @@ Route::get('/article/{slug}','HomeController@show')->name('article.show');
 //Route::get('/blog/article/{slug?}','BlogController@article')->name('article');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+Route::get('/about', function(){return view('about');});
+Route::get('/contact', function(){return view('contact');});
+Route::post('/mail', 'MailController@send_mail');
 
 Route::group(['middleware'	=>	'auth'], function(){
     Route::post('/comment', 'CommentsController@store');
