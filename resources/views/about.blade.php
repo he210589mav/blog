@@ -6,17 +6,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+                    @foreach($pages as $page)
                     <article class="post">
                         <div class="post-thumb">
 
                             <div class="post-content">
                                 <header class="entry-header text-center text-uppercase">
-                                    <h3 class="text-uppercase">Информация о блоге</h3>
+                                    <h3 class="text-uppercase">{{$page->title_about}}</h3>
                                     <br>
 
                                 </header>
                                 <div class="entry-content">
-                                    Блог создан в учебных целях, для изучения фреймфорка Laravel.
+                                    {{$page->text_about}}
 
 
                                     <div class="btn-continue-reading text-center text-uppercase">
@@ -35,7 +36,9 @@
                                 </div>
                             </div>
                     </article>
+
                 </div>
+                @endforeach
                 @include('sidebar')
             </div>
         </div>

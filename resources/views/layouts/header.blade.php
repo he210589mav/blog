@@ -42,6 +42,7 @@
                                                 <li><a href="{{route('admin.category.index')}}">Категории</a></li>
                                                 <li><a href="{{route('admin.article.index')}}">Статьи</a></li>
                                                 <li><a href="{{route('admin.tags.index')}}">Теги</a></li>
+                                                <li><a href="{{route('admin.pages.index')}}">О блоге/Контакты</a></li>
                                                 <li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
                                              @endif
                                     <li><a href="/">Домашняя страница</a></li>

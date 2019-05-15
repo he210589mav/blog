@@ -8,39 +8,39 @@
                 <div class="col-md-8">
                     <article class="post">
                         <div class="post-thumb">
-
+                            @foreach($pages as $page)
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h3 class="text-uppercase">Отправьте нам письмо</h3>
+                                <h3 class="text-uppercase">{{$page->title_contact}}</h3>
                                 <br>
                                 <form class="form-horizontal contact-form" role="form" method="post" action="/mail">
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" id="name" name="name"
-                                                   placeholder="Имя Фамилию">
+                                                   placeholder="{{$page->name_contact}}" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="email" name="email"
-                                                   placeholder="Email">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                   placeholder="{{$page->email_contact}}" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="phone" name="phone"
-                                                   placeholder="Номер телефона">
+                                            <input type="number" class="form-control" id="phone" name="phone"
+                                                   placeholder="{{$page->phone_contact}}" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
 
 										<textarea class="form-control" rows="6" id="msg" name="msg"
-                                                  placeholder="Напишите текст письма"></textarea>
+                                                  placeholder="{{$page->msg_contact}}" required></textarea>
                                         </div>
                                     </div>
                                     {{csrf_field()}}
-                                    <button type="submit" name="submit" class="btn send-btn">Отправить письмо</button>
+                                    <button type="submit" name="submit" class="btn send-btn">{{$page->button_contact}}</button>
 
                                 </form>
 
@@ -65,6 +65,7 @@
                         </div>
                     </article>
                 </div>
+                @endforeach
                 @include('sidebar')
             </div>
         </div>

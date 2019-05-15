@@ -38,16 +38,12 @@ class Article extends Model
 
     );
     }
-
-    public function uploadImage($image)
-    {
-        if($image == null) { return; }
-
-        $this->removeImage();
-
-        $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs('uploads', $filename);
-        $this->image = $filename;
+    public function uploadImage($image){
+        if($image == null){return;}
+        Storage::delete('uploads/'.$this->image);
+        $filename=str_random(10).'.'.$image->extension();
+        $image->saveAs('uploads',$filename);
+        $this->image=$filename;
         $this->save();
     }
     public function setTags($ids){

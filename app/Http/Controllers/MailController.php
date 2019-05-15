@@ -13,7 +13,7 @@ class MailController extends Controller
         $email=$request->email;
         $phone=$request->phone;
         $msg=$request->msg;
-    Mail::to('251c5f5071-8a2bc1@inbox.mailtrap.io')->send(new ContactMail($name,$email,$phone,$msg));
+    Mail::to('contact@mytestblog.kl.com.ua')->send(new ContactMail($name,$email,$phone,$msg));
         return redirect()->back();
     }
 

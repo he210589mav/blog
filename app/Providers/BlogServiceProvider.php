@@ -12,10 +12,10 @@ class BlogServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $this->topMenu();
-    }
+    //public function boot()
+   // {
+   //     $this->topMenu();
+  //  }
 
     /**
      * Register the application services.
@@ -28,10 +28,10 @@ class BlogServiceProvider extends ServiceProvider
     }
 
     //топ меню для юзеров
-    public function topMenu() {
-        View::composer('layouts.header', function ($view) {
-            $view->with('categories', \App\Category::where('parent_id', 0)->where('published', 1)->get());
-        });
+   // public function topMenu() {
+   //     View::composer('layouts.header', function ($view) {
+   //         $view->with('categories', \App\Category::where('parent_id', 0)->where('published', 1)->get());
+   //     });
 
-    }
+   // }
 }

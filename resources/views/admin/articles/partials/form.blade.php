@@ -1,7 +1,7 @@
-{!! Form::open([
+{{ Form::open([
 		'route'	=> 'admin.article.store',
 		'files'	=>	true
-	])!!}
+	])}}
 <label for="">Статус</label>
 <select class="form-control" name="published">
     @if (isset($article->id))
@@ -12,6 +12,10 @@
         <option value="1"> Опубликовано</option>
     @endif
 </select>
+
+<label for="">Лицевая картинка</label>
+    <input type="file" id="image" name="image" >
+
 <label for="">Заголовок</label>
 <input type="text" class="form-control" name="title" placeholder="Заголовок новости"
        value="{{$article->title ?? ""}}" required>
@@ -55,5 +59,5 @@
 
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
-{!! Form::close()!!}
+{{ Form::close()}}
 

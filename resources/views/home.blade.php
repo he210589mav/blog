@@ -9,6 +9,7 @@
                     @foreach($articles as $article)
                     <article class="post">
                         <div class="post-thumb">
+
                             <a href="{{route('article.show', $article->slug)}}"><img src="{{$article->getImage()}}" alt=""></a>
 
                             <a href="{{route('article.show', $article->slug)}}" class="post-thumb-overlay text-center">

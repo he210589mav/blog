@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
+use App\Pages;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -42,8 +43,8 @@ class HomeController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->firstOrFail();
-
-        return view('show', compact('article'));
+        $id=$article->categories()->pluck('slug')->implode(', ');
+        return view('show', compact('id','article'));
     }
     public function tag($slug)
     {
@@ -62,5 +63,12 @@ class HomeController extends Controller
 
         return view('list', ['articles'  =>  $articles]);
     }
-
+    public function about(){
+        $pages=Pages::all();
+        return view('about',compact('pages'));
+    }
+    public function contact(){
+        $pages=Pages::all();
+        return view('contact',compact('pages'));
+    }
 }

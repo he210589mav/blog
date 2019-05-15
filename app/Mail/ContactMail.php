@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -32,6 +32,7 @@ class ContactMail extends Mailable
      */
     public function build()
     {
+
         return $this->view('mails.contactmail')
             ->with([
                 'name'=>$this->name,
